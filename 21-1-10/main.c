@@ -1,0 +1,583 @@
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//int main()
+//{
+//    printf("Hello world!\n");
+//    return 0;
+//}
+//#include<stdio.h>
+//long long gongyinshu(long long a,long long b)
+//{
+//    long long tmp;
+//    do
+//    {
+//        if(a<b)
+//        {
+//            tmp=a;
+//            a=b;
+//            b=tmp;
+//        }
+//        a%=b;
+//    }while(a);
+//    return b;
+//}
+//void qiu(long long *arr1,long long *arr2)
+//{
+//    long long fenmu=gongyinshu(arr1[1],arr2[1]);
+//    fenmu=arr1[1]*arr2[1]/fenmu;
+//    long long fenzi=arr1[0]*(fenmu/arr1[1])+arr2[0]*(fenmu/arr2[1]);
+//    long long g=gongyinshu(fenzi,fenmu);
+//    arr2[0]=fenzi/g;
+//    arr2[1]=fenmu/g;
+//}
+//int main()
+//{
+//    long long n;
+//    scanf("%lld",&n);
+//    long long arr[n][2];
+//    int i;
+//    for(i=0;i<n;i++)
+//    {
+//        scanf("%lld/%lld",&arr[i][0],&arr[i][1]);
+//    }
+//    for(i=0;i<n-1;i++)
+//    {
+//        qiu(arr[i],arr[i+1]);
+//    }
+//    if(n==1)
+//    {
+//        long long ll=gongyinshu(arr[0][0],arr[0][1]);
+//        arr[0][0]=arr[0][0]/ll;
+//        arr[0][1]=arr[0][1]/ll;
+//    }
+//    if(arr[n-1][0]/arr[n-1][1]==0)
+//    {
+//        printf("%lld/%lld",arr[n-1][0],arr[n-1][1]);
+//    }
+//    else
+//    {
+//        if(arr[n-1][0]%arr[n-1][1]==0)
+//            printf("%lld",arr[n-1][0]/arr[n-1][1]);
+//        else
+//        {
+//            long long b;
+//            printf("%lld ",arr[n-1][0]/arr[n-1][1]);
+//            b=gongyinshu(arr[n-1][0]-arr[n-1][0]/arr[n-1][1],arr[n-1][1]);
+//            printf("%lld/%lld",(arr[n-1][0]-arr[n-1][0]/arr[n-1][1]*arr[n-1][1])/b,arr[n-1][1]/b);
+//        }
+//    }
+//    return 0;
+//}
+//#include<stdio.h>
+//#include<math.h>
+//struct fenshu{
+// long x;
+// long y;
+//}f[105],p;
+//long max(long a,long b);//max为最大公约数
+//int main (void)
+//{
+// int i,n;//z为整数部分  l为最大公约数
+// long z=0,l=0;
+//
+// scanf("%d",&n);
+// scanf("%ld/%ld",&f[0].x,&f[0].y);
+// p.x=f[0].x;p.y=f[0].y;
+// for(i=1;i<n;i++)
+// {
+//  scanf("%ld/%ld",&f[i].x,&f[i].y);
+//  p.x=p.x*f[i].y+f[i].x*p.y;
+//  p.y=p.y*f[i].y;
+// }
+// if(p.y==0){
+// printf("0");
+// return 0;
+// }
+// if(p.x<0){
+// printf("-");
+// p.x=-p.x;
+// }
+// if(p.x>=p.y){
+//  z=p.x/p.y;
+//  p.x=p.x-p.y*z;
+//  printf("%ld",z);
+// }
+// if(p.x!=0){
+// l=max(p.x,p.y);
+// p.x=p.x/l;
+// p.y=p.y/l;
+// if(z==0)
+// printf("%ld/%ld",p.x,p.y);
+// else
+// printf(" %ld/%ld",p.x,p.y);
+// }
+// if(z==0&&p.x==0)
+// printf("0");
+//
+// return 0;
+//}
+//long max(long a,long b)//欧几里得算法求最大公约数
+//{
+// if(a==0)
+// return b;
+// return max(b%a,a);
+//}
+//#include<stdio.h>
+//long gongyinshu(long a,long b)
+//{
+//    long tmp;
+//    do
+//    {
+//        if(a<b)
+//        {
+//            tmp=a;
+//            a=b;
+//            b=tmp;
+//        }
+//        a%=b;
+//    }while(a);
+//    return b;
+//}
+//void qiu(long *arr1,long *arr2)
+//{
+//    long fenmu=gongyinshu(arr1[1],arr2[1]);
+//    fenmu=arr1[1]*arr2[1]/fenmu;
+//    long  fenzi=arr1[0]*(fenmu/arr1[1])+arr2[0]*(fenmu/arr2[1]);
+//    long g=gongyinshu(fenzi,fenmu);
+//    arr2[0]=fenzi/g;
+//    arr2[1]=fenmu/g;
+//}
+//int main()
+//{
+//    long n;
+//    scanf("%ld",&n);
+//    long arr[n][2];
+//    int i;
+//    for(i=0;i<n;i++)
+//    {
+//        scanf("%ld/%ld",&arr[i][0],&arr[i][1]);
+//    }
+//    for(i=0;i<n-1;i++)
+//    {
+//        if(arr[i][1]==0||arr[i+1][1]==0||arr[i][0]==0||arr[i+1][0]==0)
+//        {
+//            arr[n-1][1]=0;
+//            break;
+//        }
+//        qiu(arr[i],arr[i+1]);
+//    }
+//    if(arr[n-1][1]==0)
+//       printf("0");
+//    else if(arr[n-1][0]/arr[n-1][1]==0)
+//    {
+//        printf("%ld/%ld",arr[n-1][0],arr[n-1][1]);
+//    }
+//    else
+//    {
+//        if(arr[n-1][0]%arr[n-1][1]==0)
+//            printf("%ld",arr[n-1][0]/arr[n-1][1]);
+//        else
+//        {
+//            long a,b;
+//            printf("%ld ",arr[n-1][0]/arr[n-1][1]);
+//            b=gongyinshu(arr[n-1][0]-arr[n-1][0]/arr[n-1][1],arr[n-1][1]);
+//            printf("%ld/%ld",(arr[n-1][0]-arr[n-1][0]/arr[n-1][1]*arr[n-1][1])/b,arr[n-1][1]/b);
+//        }
+//    }
+//    return 0;
+//}
+//#include<stdio.h>
+//long gongyinzi(long a ,long b)
+//{
+//    long tmp;
+//    do
+//    {
+//        if(a<b)
+//        {
+//            tmp=a;
+//            a=b;
+//            b=tmp;
+//        }
+//        a%=b;
+//    }while(a);
+//    return b;
+//}
+//int main()
+//{
+//    long n,i,j,fenzi=0,fenmu=1,tmp;
+//    scanf("%ld",&n);
+//    long arr[n][2];
+//    for(i=0;i<n;i++)
+//    {
+//        scanf("%ld/%ld",&arr[i][0],&arr[i][1]);
+//    }
+//    for(i=0;i<n;i++)
+//    {
+//        tmp=arr[i][0];
+//        for(j=0;j<n;j++)
+//        {
+//            if(j!=i)
+//                tmp*=arr[j][1];
+//        }
+//        fenzi+=tmp;
+//        fenmu*=arr[i][1];
+//    }
+//    if(fenmu==0||fenzi==0)
+//        printf("0");
+//    else
+//    {
+//        if(fenzi<0)
+//        {
+//            printf("-");
+//            fenzi=-fenzi;
+//        }
+//        if(fenzi/fenmu==0)
+//        {
+//            long b=gongyinzi(fenzi,fenmu);
+//            printf("%ld/%ld",fenzi/b,fenmu/b);
+//        }
+//        else
+//        {
+//            if(fenzi%fenmu==0)
+//                printf("%d",fenzi/fenmu);
+//            else
+//            {
+//                printf("%ld ",fenzi/fenmu);
+//                long l=gongyinzi(fenzi-(fenzi/fenmu)*fenmu,fenmu);
+//                printf("%ld/%ld",(fenzi-(fenzi/fenmu)*fenmu)/l,fenmu/l);
+//            }
+//        }
+//    }
+//    return 0;
+//}
+//#include<stdio.h>
+//int main()
+//{
+//    int i,a,b,c;
+//    for(i=0;i<3;i++)
+//    {
+//        scanf("%d%d%d",&a,&b,&c);
+//    }
+//    if(a>b)
+//    {
+//        i=a;
+//        a=b;
+//        b=i;
+//    }
+//    if(a>c)
+//    {
+//        i=a;
+//        a=c;
+//        c=i;
+//    }
+//    if(b>c)
+//    {
+//        i=b;
+//        b=c;
+//        c=i;
+//    }
+//    printf("%d->%d->%d",a,b,c);
+//    return 0;
+//}
+//#include<stdio.h>
+//int main()
+//{
+//    int n;
+//    scanf("%d",&n);
+//    printf("2^%d = %d",n,1<<n);
+//    return 0;
+//}
+//#include<stdio.h>
+//#include<stdlib.h>
+//int main()
+//{
+//    char arr1[10001],arr2[10001];
+//    gets(arr1);
+//    gets(arr2);
+//    char *arr3,*arr4;
+//    arr4=arr1;
+//    while(*arr4)
+//    {
+//        arr3=arr2;
+//        while(*arr3)
+//        {
+//            if(*arr3==*arr4)
+//                break;
+//            arr3++;
+//        }
+//        if(!*arr3)
+//            printf("%c",*arr4);
+//        arr4++;
+//    }
+//}
+//#include<stdio.h>
+//int fun(int n)
+//{
+//    int i,a=1;
+//    for(i=1;i<=n;i++)
+//    {
+//        a*=i;
+//    }
+//    return a;
+//}
+//int main()
+//{
+//    int n,i,sum=0;
+//    scanf("%d",&n);
+//    for(i=1;i<=n;i++)
+//    {
+//        sum+=fun(i);
+//    }
+//    printf("%d",sum);
+//}
+//#include<stdio.h>
+//int main()
+//{
+//    printf("This is a simple problem.");
+//}
+//#include<stdio.h>
+//int main()
+//{
+//    printf("%c\n%c\n%c\n%c\n%c",'\100','\345','\376','\745','\100');
+//}
+//#include<stdio.h>
+//int main()
+//{
+//    int n,i,j;
+//    char a;
+//    scanf("%d %c",&n,&a);
+//    for(i=0;i<n/2+n%2;i++)
+//    {
+//        for(j=0;j<n;j++)
+//           printf("%c",a);
+//        printf("\n");
+//    }
+//}
+//#include<stdio.h>
+//int yan(char arr[19])
+//{
+//    int sum=0,i;
+//    char arr3[]="10X98765432";
+//    int arr2[]={7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2};
+//    for(i=0;i<17;i++)
+//    {
+//        sum+=arr2[i]*(arr[i]-'0');
+//    }
+//    sum%=11;
+//    if(arr3[sum]==arr[17])
+//        return 0;
+//    else
+//        return 1;
+//}
+//int main()
+//{
+//    int n,i,flag=0;
+//    char arr[19];
+//    scanf("%d",&n);
+//    for(i=0;i<n;i++)
+//    {
+//        scanf("%s",arr);
+//        if(yan(arr))
+//        {
+//            if(flag!=0)
+//                printf("\n");
+//            printf("%s",arr);
+//            flag+=1;
+//        }
+//    }
+//    if(!flag)
+//        printf("All passed");
+//    return 0;
+//}
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//    char arr[51];
+//    float count=0,sz;
+//    scanf("%s",arr);
+//    char *tmp=arr;
+//    if(*arr=='-')
+//    {
+//        tmp=tmp+1;
+//        while(*tmp)
+//        {
+//            if(*tmp=='2')
+//                count++;
+//            tmp++;
+//        }
+//        count*=1.5;
+//        sz=strlen(arr)-1;
+//    }
+//    else
+//    {
+//        while(*tmp)
+//        {
+//            if(*tmp=='2')
+//                count++;
+//            tmp++;
+//        }
+//        sz=strlen(arr);
+//    }
+//    if((arr[strlen(arr)-1]-'0')%2==0)
+//        printf("%.2f%%",((count*2)/sz)*100);
+//    else
+//        printf("%.2f%%",count/sz*100);
+//    return 0;
+//}
+//#include<stdio.h>
+//int main()
+//{
+//    int n,m,i;
+//    scanf("%d:%d",&n,&m);
+//    if(n<12||(n==12&&m==0))
+//    {
+//        printf("Only %02d:%02d.  Too early to Dang.",n,m);
+//    }
+//    else
+//    {
+//        n-=12;
+//       if(m>0)
+//       {
+//           for(i=0;i<n+1;i++)
+//               printf("Dang");
+//       }
+//       else
+//           for(i=0;i<n;i++)
+//               printf("Dang");
+//    }
+//    return 0;
+//}
+//#include<stdio.h>
+//int main()
+//{
+//    int a,b,n,aa,bb,i,ahua,bhua,ahan,bhan;
+//    scanf("%d%d",&a,&b);
+//    aa=a;
+//    bb=b;
+//    scanf("%d",&n);
+//    for(i=0;i<n;i++)
+//    {
+//        scanf("%d%d%d%d",&ahan,&ahua,&bhan,&bhua);
+//        if((ahua==ahan+bhan)&&ahan!=bhan)
+//            aa--;
+//        else if((bhua==ahan+bhan)&&ahan!=bhan)
+//            bb--;
+//        if(aa==-1)
+//        {
+//            printf("A\n%d",b-bb);
+//            break;
+//        }
+//        if(bb==-1)
+//        {
+//            printf("B\n%d",a-aa);
+//            break;
+//        }
+//    }
+//    return 0;
+//
+//#include<stdio.h>
+//int main()
+//{
+//    int n,tmp,arr1[100000]={0},arr2[100000]={0},i,t,j,flag=0;
+//    scanf("%d",&n);
+//    for(i=0;i<n;i++)
+//    {
+//        scanf("%d",&tmp);
+//        if(tmp==1)
+//        {
+//            scanf("%d",&t);
+//            arr2[t]=1;
+//        }
+//        else
+//        {
+//            for(j=0;j<tmp;j++)
+//            {
+//                scanf("%d",&t);
+//                arr1[t]=1;
+//            }
+//        }
+//    }
+//    scanf("%d",&tmp);
+//    for(i=0;i<tmp;i++)
+//    {
+//        scanf("%d",&t);
+//        if(arr1[t]==0||(arr2[t]==1&&arr1[t]==0))
+//        {
+//            if(flag!=0)
+//                printf(" ");
+//            printf("%d",t);
+//            flag=1;
+//            arr1[t]=1;
+//            arr2[t]=0;
+//        }
+//    }
+//    if(flag==0)
+//        printf("No one is handsome");
+//    return 0;
+//}
+//#include<stdio.h>
+//int main()
+//{
+//    printf("I'm gonna WIN!\nI'm gonna WIN!\nI'm gonna WIN!");
+//}
+//#include<stdio.h>
+//int main()
+//{
+//    int n,i,tmp,count=0;
+//    scanf("%d",&n);
+//    for(i=0;i<n;i++)
+//    {
+//        scanf("%d",&tmp);
+//        if(tmp%2==0)
+//            count++;
+//    }
+//    printf("%d %d",n-count,count);
+//    return 0;
+//}
+//#include<stdio.h>
+//#include<ctype.h>
+//int main()
+//{
+//    char arr[100001];
+//    int g=0,p=0,l=0,t=0;
+//    gets(arr);
+//    char *tmp=arr;
+//    while(*tmp)
+//    {
+//        if(tolower(*tmp)=='g')
+//            g++;
+//        if(tolower(*tmp)=='p')
+//            p++;
+//        if(tolower(*tmp)=='l')
+//            l++;
+//        if(tolower(*tmp)=='t')
+//            t++;
+//        tmp++;
+//    }
+//    while(g||p||l||t)
+//    {
+//        if(g!=0)
+//        {
+//            printf("G");
+//            g--;
+//        }
+//        if(p!=0)
+//        {
+//            printf("P");
+//            p--;
+//        }
+//        if(l!=0)
+//        {
+//            printf("L");
+//            l--;
+//        }
+//        if(t!=0)
+//        {
+//            printf("T");
+//            t--;
+//        }
+//    }
+//    return 0;
+//}
